@@ -2,15 +2,14 @@
 <MudContainer MaxWidth="MaxWidth.Large">
     <MudGrid Justify="Justify.Center" >
         <MudItem xs="12" Style="align-self: flex-start;position: relative">
-            <canvas id="canvas3d"></canvas>
-            <canvas @ref="splineCanvas"></canvas >
+            <canvas @ref="splineCanvas" id="canvas3d"></canvas >
         </MudItem>
     </MudGrid>
 </MudContainer>
 
 @code {
     private ElementReference splineCanvas;
-    private string sceneObject = "/scene.json";
+    private string sceneObject = "scene.json";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
