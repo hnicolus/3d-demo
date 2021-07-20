@@ -1,0 +1,23 @@
+@inject IJSRuntime JS
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudGrid Justify="Justify.Center" >
+        <MudItem xs="12" Style="align-self: flex-start;position: relative">
+            <canvas id="canvas3d"></canvas>
+            <canvas @ref="splineCanvas"></canvas >
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private ElementReference splineCanvas;
+    private string sceneObject = "/scene.json";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("runSplineScene", splineCanvas, sceneObject);
+        }
+    }
+
+}
